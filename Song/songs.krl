@@ -7,7 +7,7 @@ ruleset see_songs {
 		sharing on
 	}
 	rule songs is active {
-		select when echo message where msg_type re#"song"# &&
+		select when echo message where msg_type re#song# &&
 			input "(.*)" setting(m)
 		send_directive("sing") with
 			song = m;
