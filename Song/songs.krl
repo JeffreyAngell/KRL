@@ -19,9 +19,12 @@ ruleset see_songs {
 	}
 	rule find_hymn is active {
 		select when explicit sung
-			song re#god#i
+			song "(.*god.*)" setting(m)
+		send_directive("found_hymn") with
+			hymn = m;
 		fired {
-			raise explicit event 'found_hymn';
+			raise explicit event 'found_hymn'
+				with hymn = m;
 		}
 	}
 }
