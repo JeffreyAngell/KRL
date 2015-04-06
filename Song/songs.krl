@@ -19,7 +19,7 @@ ruleset see_songs {
 	}
 	rule find_hymn is active {
 		select when explicit sung
-			song "(.*god.*)" setting(m)
+			song "(.*)" setting(m)
 		send_directive("found_hymn") with
 			hymn = m;
 		fired {
