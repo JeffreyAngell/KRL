@@ -10,6 +10,8 @@ ruleset see_songs {
 		select when echo message
 			msg_type "song"
 			input "(.*)" setting(m)
+		send_directive("read_song") with
+			name = m;
 		fired {
 			raise explicit event 'sung'
 				with song = m;
