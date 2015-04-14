@@ -5,6 +5,7 @@ ruleset song_store {
 		author "Jeffrey Angell"
 		logging on
 		sharing on
+		provides songs, hymns, secular_music
 	}
 	global {
 		songs = function(){
