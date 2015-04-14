@@ -27,12 +27,18 @@ ruleset song_store {
 			song = { time:now() : event:attr("song")};
 			songs = song.put(ent:songs);
 		}
+		always{
+			set ent:songs songs;
+		}
 	}
 	rule collect_hymns {
 		select when explicit found_hymn
 		pre{
 			hymn = { time:now() : event:attr("hymn")};
 			hymns = song.put(ent:hymns);
+		}
+		always{
+			set ent:hymns hymns;
 		}
 	}
 	rule clear_songs {
