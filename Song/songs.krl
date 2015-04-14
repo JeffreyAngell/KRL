@@ -10,8 +10,6 @@ ruleset see_songs {
 		select when echo message
 			msg_type "song"
 			input "(.*)" setting(m)
-		send_directive("read_song") with
-			name = m;
 		always {
 			raise explicit event 'sung'
 				with song = m;
@@ -19,10 +17,10 @@ ruleset see_songs {
 	}
 	rule find_hymn is active {
 		select when explicit sung
-			song re#(.*god.*)#i setting(m)
-		send_directive("found_hymn") with
-			hymn = m;
-		always {
+			song "(.*)" setting(m)
+		if m.match(re/.*god.*/i) then
+			noop();
+		fired {
 			raise explicit event 'found_hymn'
 				with hymn = m;
 		}
