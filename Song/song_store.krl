@@ -6,6 +6,17 @@ ruleset song_store {
 		logging on
 		sharing on
 	}
+	global {
+		songs = function(){
+			ent:songs
+		};
+		hymns = function(){
+			ent:hymns
+		};
+		secular_music = function(){
+			ent:songs.values().difference(ent:hymns.values());
+		};
+	}
 	rule collect_songs {
 		select when explicit sung
 		pre{
