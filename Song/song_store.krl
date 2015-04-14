@@ -4,8 +4,8 @@ ruleset song_store {
 		description << A store of songs >>
 		author "Jeffrey Angell"
 		logging on
-		sharing on
 		provides songs, hymns, secular_music
+		sharing on
 	}
 	global {
 		songs = function(){
