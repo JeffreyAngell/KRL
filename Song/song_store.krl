@@ -9,13 +9,16 @@ ruleset song_store {
 	}
 	global {
 		songs = function(){
-			ent:songs
+			songs = ent:songs;
+			songs;
 		};
 		hymns = function(){
-			ent:hymns
+			hymns = ent:hymns;
+			hymns;
 		};
 		secular_music = function(){
-			ent:songs.values().difference(ent:hymns.values());
+			songs = ent:songs.values().difference(ent:hymns.values());
+			songs;
 		};
 	}
 	rule collect_songs {
