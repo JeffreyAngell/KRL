@@ -35,7 +35,7 @@ ruleset song_store {
 		select when explicit found_hymn
 		pre{
 			hymn = { time:now() : event:attr("hymn")};
-			hymns = song.put(ent:hymns);
+			hymns = hymn.put(ent:hymns);
 		}
 		always{
 			set ent:hymns hymns;
